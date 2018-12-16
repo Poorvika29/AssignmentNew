@@ -1,0 +1,103 @@
+﻿model DoctorModel.Doctor
+
+    @{
+        ViewBag.Title = "Details";
+    }
+
+    <h2>Details</h2>
+
+
+    @Html.DisplayForModel()
+    @*<div>
+        <h4>Doctor</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.WorkEx)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.WorkEx)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Fee)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Fee)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EmailId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EmailId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Website)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Website)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tblSpeciality.Speciality)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tblSpeciality.Speciality)
+            </dd>
+
+        </dl>
+    </div>*@
+
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+
+@*@model DoctorModel.Company
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@Html.DisplayTextFor(x => x.)*@

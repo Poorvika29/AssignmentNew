@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DoctorModel.Totals>
+Part 29
+@{
+    ViewBag.Title = "DoctorBySpeciality";
+}
+
+<h2>DoctorBySpeciality</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SpecialityN)
+        </th>
+        <th>  @Html.DisplayNameFor(model => model.Total)</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpecialityN)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+       
+    </tr>
+}
+
+</table>

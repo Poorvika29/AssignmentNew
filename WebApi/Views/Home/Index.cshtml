@@ -1,0 +1,29 @@
+﻿@model DoctorModel.Company
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index Part 34 </h2>
+
+
+@*Hard Coded*@
+
+@Html.DropDownList("Speciality", new List<SelectListItem>
+{
+    new SelectListItem { Text = "Dermatologist", Value = "1", Selected=true},
+    new SelectListItem { Text = "Neurologist", Value = "2"},
+    new SelectListItem { Text = "Dentist", Value = "3"}
+}, "Select Speciality")
+
+<h2>Index Part 34 and 35</h2>
+
+@*From db*@
+
+@Html.DropDownList("Specialities", "Select Speciality")
+
+<h2>Index Part 36</h2>
+
+@Html.TextBoxFor(m=>m.CompanyName)
+@Html.DropDownListFor(m => m.Departments, new SelectList(Model.Departments, "SpecId", "Speciality", ""), "Select Speciality")
+
