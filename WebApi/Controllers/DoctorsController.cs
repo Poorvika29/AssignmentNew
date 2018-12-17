@@ -7,21 +7,56 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DoctorModel;
+using PagedList.Mvc;
+using PagedList;
 
 namespace WebApi.Controllers
 {
+
+
+
+    [AllowAnonymous] // Part 70s
     public class DoctorsController : Controller
     {
         private DoctorEntities db = new DoctorEntities();
 
         // GET: Doctors
-        public ActionResult Index()
+
+        [OutputCache(Duration = 10)] //Part 73
+        public ActionResult Index(int? page, string sortBy)  //Part 63 an 64
+        {
+            ViewBag.NameSort = String.IsNullOrEmpty(sortBy) ? "Name desc" : "";
+            ViewBag.GenderSort = sortBy == "Gender" ? "Gender desc" : "Gender";
+
+            var doctors = db.Doctors.Include(d => d.tblSpeciality).AsQueryable();
+
+            switch (sortBy)
+            {
+                case "Name desc":
+                    doctors = doctors.OrderByDescending(x => x.Name);
+                    break;
+                case "Gender desc":
+                    doctors = doctors.OrderByDescending(x => x.Gender);
+                    break;
+                case "Gender":
+                    doctors = doctors.OrderBy(x => x.Gender);
+                    break;
+                default:
+                    doctors = doctors.OrderBy(x => x.Name);
+                    break;
+            }
+
+            return View(doctors.ToList().ToPagedList(page ?? 1, 3));
+        }
+        public ActionResult PartialView1()
         {
             var doctors = db.Doctors.Include(d => d.tblSpeciality);
             return View(doctors.ToList());
         }
-
         // GET: Doctors/Details/5
+
+
+        [AcceptVerbs(HttpVerbs.Get)]  //Part 67
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -113,6 +148,8 @@ namespace WebApi.Controllers
             ViewBag.Speciality = new SelectList(db.tSpecialities, "SpecId", "Speciality", doctor.Speciality);
             return View(doctor);
         }
+
+
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -216,13 +253,5 @@ namespace WebApi.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

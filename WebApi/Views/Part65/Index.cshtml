@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DoctorModel.Doctor>
+
+@*<script src="~/Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>*@
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+@* Part 65*@
+<script type="text/javascript" language="javascript">
+    $(function () {
+        $("#checkAll").click(function () {
+            $("input[name='employeeIdsToDelete']").attr("checked", this.checked);
+
+            $("input[name='employeeIdsToDelete']").click(function () {
+                if ($("input[name='employeeIdsToDelete']").length == $("input[name='employeeIdsToDelete']:checked").length) {
+                    $("#checkAll").attr("checked", "checked");
+                }
+                else {
+                    $("#checkAll").removeAttr("checked");
+                }
+            });
+
+        });
+        $("#btnSubmit").click(function () {
+            var count = $("input[name='employeeIdsToDelete']:checked").length;
+            if (count == 0) {
+                alert("No rows selected to delete");
+                return false;
+            }
+            else {
+                return confirm(count + " row(s) will be deleted");
+            }
+        });
+    });
+</script>
+
+
+
+<div style="font-family:Arial">
+
+    @using (Html.BeginForm("Delete", "Home", FormMethod.Post))
+    {
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="CheckAll" />
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Gender
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.EditorForModel()
+            </tbody>
+        </table>
+        <input type="submit" value="Delete selected employees" />
+    }
+</div>

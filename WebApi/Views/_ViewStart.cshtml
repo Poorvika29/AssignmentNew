@@ -1,3 +1,9 @@
-﻿@{
+﻿@*@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
+
+
+@* Part 60*@
+@{
+    Layout = Request.Browser.IsBrowser("Chrome") ? "~/Views/Shared/_Layout.cshtml" : "~/Views/Shared/_DifferentLayout.cshtml";
 }

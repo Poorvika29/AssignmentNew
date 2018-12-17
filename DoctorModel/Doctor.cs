@@ -24,6 +24,8 @@ namespace DoctorModel
         public string Website { get; set; }
         public Nullable<int> Speciality { get; set; }
         public Nullable<System.DateTime> date { get; set; }
+        public string Photo { get; set; }
+        public string AlternateText { get; set; }
     
         public virtual tSpeciality tblSpeciality { get; set; }
     }

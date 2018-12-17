@@ -1,0 +1,43 @@
+﻿@model DoctorModel.Doctor
+
+@{
+    ViewBag.Title = "_Doctor";
+}
+
+
+<div>
+   
+    <table border="0">
+        <tr>
+            <td>
+                <img src="@Url.Content(Model.Photo)"/>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td><b>@Html.DisplayNameFor(model => model.Name)</b></td>
+                        <td> @Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+                    <tr>
+                        <td><b>@Html.DisplayNameFor(model => model.Gender)</b></td>
+                        <td>@Html.DisplayFor(model => model.Gender)</td>
+                    </tr>
+                    <tr>
+                        <td><b>@Html.DisplayNameFor(model => model.Location)</b></td>
+                        <td>@Html.DisplayFor(model => model.Location)</td>
+                    </tr>
+                </table>
+                <br />------------------------
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </td>
+        </tr>
+
+
+
+    </table>
+   
+</div>
+

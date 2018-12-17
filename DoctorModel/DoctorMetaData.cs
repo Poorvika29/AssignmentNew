@@ -16,9 +16,11 @@ namespace DoctorModel
 
         public int Id { get; set; }
 
+        [RegularExpression(@"^(([A-za-z]+[\s]{1}[A-za-z]+)|([A-Za-z]+))$")]
         [Display(Name = "Doctor Name" )]
         //[DisplayAttribute(Name="Full Name")]  //Part 40
         //[DisplayName("Full Name")]
+        [StringLength(10, MinimumLength = 5)]   //Part 80
         public string Name { get; set; }
         [Required]
 
@@ -34,6 +36,8 @@ namespace DoctorModel
         [Required]
 
         [DataType(DataType.Currency)]                        // Part 41
+
+        [Range(200, 1500)]                                 //Part 80
         public int Fee { get; set; }
         [Required]
 
@@ -58,9 +62,13 @@ namespace DoctorModel
         //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm:ss}")]
 
         // 12 hour notation with AM PM
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm:ss tt}")]
+        // [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
 
-        [DataType(DataType.Date)]                   // Part 41
+        // [DataType(DataType.Date)]                   // Part 41
+
+        [Range(typeof(DateTime), "01/01/2000", "01/01/2020")]           //Part 81
+        //[DateRange("01/01/2000")]           //Part 82
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]       //Part 82
         public Nullable<System.DateTime> date { get; set; }
 
     }

@@ -8,4 +8,4 @@
 @*@Html.TextBox("", (Model.HasValue ? Model.Value.ToString("dd/MM/yyyy") : string.Empty), new { @class = "date" })*@
 
 
-@Html.TextBox("", Model.HasValue ? ViewData.TemplateInfo.FormattedModelValue : "", new { @class = "date" })
+@Html.TextBox("", Model.HasValue ? ViewData.TemplateInfo.FormattedModelValue : "", new { @class = "date" })       @*  //Part 46*@

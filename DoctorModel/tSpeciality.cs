@@ -11,8 +11,7 @@ namespace DoctorModel
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-
+    
     public partial class tSpeciality
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,8 +22,6 @@ namespace DoctorModel
     
         public int SpecId { get; set; }
         public string Speciality { get; set; }
-       
-
         public Nullable<bool> IsSelected { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

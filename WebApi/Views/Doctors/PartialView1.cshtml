@@ -1,0 +1,13 @@
+﻿@model IEnumerable<DoctorModel.Doctor>
+
+@{
+    ViewBag.Title = "PartialView";
+}
+
+<h2>PartialView</h2>
+
+@foreach (var item in Model)
+{
+    @Html.Partial("_Doctor", item)
+}
+

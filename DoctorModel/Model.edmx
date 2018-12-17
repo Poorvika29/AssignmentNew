@@ -19,6 +19,8 @@
           <Property Name="Website" Type="varchar" MaxLength="100" />
           <Property Name="Speciality" Type="int" />
           <Property Name="date" Type="datetime" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="100" />
+          <Property Name="AlternateText" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="tblSpeciality">
           <Key>
@@ -67,6 +69,8 @@
           <Property Name="Speciality" Type="Int32" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblSpeciality" Relationship="Self.FK_Speciality" FromRole="tblDoctor" ToRole="tblSpeciality" />
+          <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AlternateText" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tSpeciality">
           <Key>
@@ -106,6 +110,8 @@
           <EntitySetMapping Name="Doctors">
             <EntityTypeMapping TypeName="DbOneModel.Doctor">
               <MappingFragment StoreEntitySet="tblDoctor">
+                <ScalarProperty Name="AlternateText" ColumnName="AlternateText" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
