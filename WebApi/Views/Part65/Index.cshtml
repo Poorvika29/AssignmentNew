@@ -2,9 +2,13 @@
 
 @*<script src="~/Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>*@
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
-@* Part 65*@
+
+@* Part 66*@
 <script type="text/javascript" language="javascript">
+
+
     $(function () {
         $("#checkAll").click(function () {
             $("input[name='employeeIdsToDelete']").attr("checked", this.checked);
@@ -19,6 +23,9 @@
             });
 
         });
+
+
+        //Part 65
         $("#btnSubmit").click(function () {
             var count = $("input[name='employeeIdsToDelete']:checked").length;
             if (count == 0) {
@@ -36,7 +43,7 @@
 
 <div style="font-family:Arial">
 
-    @using (Html.BeginForm("Delete", "Home", FormMethod.Post))
+    @using (Html.BeginForm("Delete", "Part65", FormMethod.Post))
     {
         <table border="1">
             <thead>
@@ -59,6 +66,6 @@
                 @Html.EditorForModel()
             </tbody>
         </table>
-        <input type="submit" value="Delete selected employees" />
+        <input type="submit" value="Delete selected employees" id="btnSubmit" />
     }
 </div>

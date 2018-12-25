@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h1>Doctor Area Index View</h1>
+<table border="1">
+    <tr>
+        <td>
+            <b>Links</b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Main Area Home Page", "Index", "Doctors", new { area = "" }, null)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Doctor Area Home Page", "Index", "Home", new { area = "Doctor" }, null)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Patient Area Home Page", "Index", "Home", new { area = "Patient" }, null)
+        </td>
+    </tr>
+</table>
+

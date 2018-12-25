@@ -18,9 +18,14 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
+        [RequireHttps]
         public ActionResult Delete(IEnumerable<int> employeeIdsToDelete)
         {
-            db.Doctors.Where(x => employeeIdsToDelete.Contains(x.Id)).ToList().ForEach(db.Doctors.DeleteObject);
+            var list = db.Doctors.Where(x => employeeIdsToDelete.Contains(x.Id)).ToList();
+            foreach(var item in list)
+            {
+                db.Doctors.Remove(item);
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -6,11 +6,40 @@
 
 <h2>Create</h2>
 
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/CustomJavascript.js"></script>
 
-@using (Html.BeginForm()) 
+
+@*Part 86*@
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+
+@*
+    Part 87
+    
+    <script type="text/javascript" language="javascript">
+    function MouseOver(controlId) {
+        var control = document.getElementById(controlId);
+        control.style.backgroundColor = 'red'
+    }
+
+    function MouseOut(controlId) {
+        var control = document.getElementById(controlId);
+        control.style.backgroundColor = '#d3dce0'
+    }
+</script>*@
+
+
+
+
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Doctor</h4>
         <hr />
@@ -19,7 +48,7 @@
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Name, "*", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -36,7 +65,7 @@ new SelectListItem { Text = "Male", Value="Male" },
 new SelectListItem { Text = "Female", Value="Female" }
 }, "Select Gender")
 
-                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Gender, "*", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -44,7 +73,7 @@ new SelectListItem { Text = "Female", Value="Female" }
             @Html.LabelFor(model => model.WorkEx, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.WorkEx, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.WorkEx, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.WorkEx, "*", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -52,7 +81,7 @@ new SelectListItem { Text = "Female", Value="Female" }
             @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Location, "*", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -60,7 +89,7 @@ new SelectListItem { Text = "Female", Value="Female" }
             @Html.LabelFor(model => model.Fee, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Fee, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Fee, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Fee, "*", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -68,7 +97,7 @@ new SelectListItem { Text = "Female", Value="Female" }
             @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.EmailId, "*", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -76,15 +105,15 @@ new SelectListItem { Text = "Female", Value="Female" }
             @Html.LabelFor(model => model.Website, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Website, "*", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Speciality, "Speciality", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Speciality",null,"Select Speciality", htmlAttributes: new { @class = "form-control" })      @*Part 27 "Slect Speciality"*@
-                @Html.ValidationMessageFor(model => model.Speciality, "", new { @class = "text-danger" })
+                @Html.DropDownList("Speciality", null, "Select Speciality", htmlAttributes: new { @class = "form-control" })      @*Part 27 "Slect Speciality"*@
+                @Html.ValidationMessageFor(model => model.Speciality, "*", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -92,13 +121,16 @@ new SelectListItem { Text = "Female", Value="Female" }
             @Html.LabelFor(model => model.date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.date, "*", new { @class = "text-danger" })
             </div>
+        </div>
+        <div>
+            @Html.ValidationSummary(false, "Please fix the following errors and then submit the form")      @*Part 86*@
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" onmouseover="MouseOver('btnSubmit')" onmouseout="MouseOut('btnSubmit')"/>    @*Part 87*@
             </div>
         </div>
     </div>
@@ -108,6 +140,4 @@ new SelectListItem { Text = "Female", Value="Female" }
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+

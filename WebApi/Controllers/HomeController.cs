@@ -39,7 +39,7 @@ namespace WebApi.Controllers
             
         ViewBag.Specialities = new SelectList(ts.Departments, "SpecId", "Speciality");
             ViewBag.CompanyName = ts.CompanyName;
-            return View();
+            return View(ts);
         }
 
         public ActionResult About()

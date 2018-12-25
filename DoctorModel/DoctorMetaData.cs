@@ -1,9 +1,9 @@
-﻿using System;
+﻿using DoctorModel.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 
 namespace DoctorModel
 {
@@ -37,7 +37,7 @@ namespace DoctorModel
 
         [DataType(DataType.Currency)]                        // Part 41
 
-        [Range(200, 1500)]                                 //Part 80
+        [Range(200, 1500)]                                 //Part 81
         public int Fee { get; set; }
         [Required]
 
@@ -63,12 +63,15 @@ namespace DoctorModel
 
         // 12 hour notation with AM PM
         // [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-
+        
         // [DataType(DataType.Date)]                   // Part 41
 
-        [Range(typeof(DateTime), "01/01/2000", "01/01/2020")]           //Part 81
-        //[DateRange("01/01/2000")]           //Part 82
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]       //Part 82
+        //[Range(typeof(DateTime), "01/01/2000", "01/01/2020")]           //Part 81
+        //[Range(typeof(DateTime), "01/01/2000", DateTime.Now.ToShortDateString())]               //Part 82
+        [DateRange("01/01/2000")]           //Part 82
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
+
+        [CurrentDate(ErrorMessage = "Hire Date must be less than or equal to Today's Date")]        //Part 82
         public Nullable<System.DateTime> date { get; set; }
 
     }

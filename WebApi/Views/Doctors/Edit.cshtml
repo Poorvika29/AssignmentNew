@@ -22,12 +22,18 @@
     }
 </div>
 @*Part 61*@
+
+
+
 @section Menu
 {
     @Html.ActionLink("List", "Index") <br />
     @Html.ActionLink("Details", "Details", new { id = Model.Id }) <br />
     @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
 }
+
+
+
 @*@using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()

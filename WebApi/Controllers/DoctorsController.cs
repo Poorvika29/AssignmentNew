@@ -22,7 +22,9 @@ namespace WebApi.Controllers
 
         // GET: Doctors
 
-        [OutputCache(Duration = 10)] //Part 73
+        //[OutputCache(Duration = 10)] //Part 73
+        [OutputCache(CacheProfile = "1MinuteCache")]  //Part 74
+        
         public ActionResult Index(int? page, string sortBy)  //Part 63 an 64
         {
             ViewBag.NameSort = String.IsNullOrEmpty(sortBy) ? "Name desc" : "";
@@ -97,13 +99,27 @@ namespace WebApi.Controllers
             return View();
         }
 
+        //Part 89
+        public JsonResult IsUserNameAvailable(string Name)
+        {
+            return Json(!db.Doctors.Any(x => x.Name == Name),
+                                                 JsonRequestBehavior.AllowGet);
+        }
+
+
         // POST: Doctors/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]      //Part 76
         public ActionResult Create([Bind(Include = "Id,Name,Gender,WorkEx,Location,Fee,EmailId,Website,Speciality,date")] Doctor doctor)
         {
+
+            if (db.Doctors.Any(x => x.Name == doctor.Name))
+            {
+                ModelState.AddModelError("UserName", "UserName already in use");
+            }
 
             if (string.IsNullOrEmpty(doctor.Name)) // Part 28
             {

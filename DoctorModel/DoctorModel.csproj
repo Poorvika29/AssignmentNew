@@ -89,6 +89,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CurrentDateAttribute.cs" />
+    <Compile Include="Common\DateRangeAttribute.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Doctor.cs">
       <DependentUpon>Model.tt</DependentUpon>

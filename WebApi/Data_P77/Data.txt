@@ -1,0 +1,13 @@
+﻿
+Part77 -> Index -> OnActionExecuting 	- 26-12-2018 00:30:12
+
+Part77 -> Index -> OnActionExecuted 	- 26-12-2018 00:30:12
+Part77 -> Index -> OnResultExecuting 	- 26-12-2018 00:30:12
+Part77 -> Index -> OnResultExecuted 	- 26-12-2018 00:30:12
+---------------------------------------------------------
+
+Part77 -> Welcome -> OnActionExecuting 	- 26-12-2018 00:31:17
+
+Part77 -> Welcome -> OnActionExecuted 	- 26-12-2018 00:31:25
+Part77 -> Welcome -> Exception ocuured 	- 26-12-2018 00:31:25
+---------------------------------------------------------

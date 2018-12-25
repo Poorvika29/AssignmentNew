@@ -24,6 +24,7 @@
 
 <h2>Index Part 36</h2>
 
-@Html.TextBoxFor(m=>m.CompanyName)
+@Html.TextBoxFor(m => m.CompanyName)
+@*@Html.DropDownListFor(m => m.Departments, new SelectList(Model.Departments, "SpecId", "Speciality", ""), "Select Speciality")*@
 @Html.DropDownListFor(m => m.Departments, new SelectList(Model.Departments, "SpecId", "Speciality", ""), "Select Speciality")
 
